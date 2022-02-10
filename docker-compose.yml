@@ -1,0 +1,20 @@
+version : '3'
+
+services:
+  trucorpweb:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    container_name: trucorp-web-2.0
+    ports:
+      - 6000:80
+  trucorpdb:
+    build:
+      context: .
+      dockerfile: sql.Dockerfile
+    restart: always
+    container_name: db_uas
+    environment:
+      MYSQL_ROOT_PASSWORD: 'gabisamasukjolibi'
+    ports:
+      - 3390:3306
